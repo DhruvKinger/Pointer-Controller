@@ -45,7 +45,7 @@ class Gaze_Estimation_Model:
 
         self.exec_net = self.plugin.load_network(network=self.model, device_name=self.device,num_requests=1)
 
-        
+
 
     def predict(self, image):
         '''
@@ -57,12 +57,25 @@ class Gaze_Estimation_Model:
     def check_model(self):
         raise NotImplementedError
 
-    def preprocess_input(self, image):
+    def preprocess_input(self, leye,reye):
     '''
     Before feeding the data into the model for inference,
     you might have to preprocess it. This function is where you can do that.
     '''
-        raise NotImplementedError
+        self.leye=cv2.resize(leye,(self.input_shape[3],self.input_shape[2]))   ## cv2.resize(frame, (w, h))
+        
+        self.reye=cv2.resize(reye,(self.input_shape[3],self.input_shape[2]))   ## cv2.resize(frame, (w, h))
+
+        self.leye=self.leye.transpose((2, 0, 1))  
+        
+        self.reye=self.reye.transpose((2, 0, 1))  
+        
+        self.leye=self.leye.reshape(1, *self.leye.shape)
+        
+        self.reye=self.reye.reshape(1, *self.reye.shape)
+       
+        return self.leye,self.reye
+
 
     def preprocess_output(self, outputs):
     '''
