@@ -61,7 +61,21 @@ class Face_Detection_Model:
         TODO: You will need to complete this method.
         This method is meant for running predictions on the input image.
         '''
-        raise NotImplementedError
+        self.processed_image=self.preprocess_input(image)
+        outputs = self.exec_net.infer({self.input_name:self.processed_image})
+        coords = self.preprocess_output(outputs, prob_threshold)
+
+        if (len(coords)==0):
+            return 0, 0
+        coords = coords[0] 
+        h=image.shape[0]
+        w=image.shape[1]
+        coords = coords* np.array([w, h, w, h])
+        coords = coords.astype(np.int32)
+        
+        cropped_face = image[coords[1]:coords[3], coords[0]:coords[2]]
+        return cropped_face, coords
+
 
     def check_model(self):
         raise NotImplementedError
@@ -75,9 +89,19 @@ class Face_Detection_Model:
         return self.image
         
 
-    def preprocess_output(self, outputs):
+    def preprocess_output(self, outputs,prob_threshold):
     '''
     Before feeding the output of this model to the next model,
     you might have to preprocess the output. This function is where you can do that.
     '''
-        raise NotImplementedError
+        coords =[]
+        outs = outputs[self.output_names][0][0]
+        for out in outs:
+            conf = out[2]
+            if conf>prob_threshold:
+                x_min=out[3]
+                y_min=out[4]
+                x_max=out[5]
+                y_max=out[6]
+                coords.append([x_min,y_min,x_max,y_max])
+        return coords
