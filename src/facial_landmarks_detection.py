@@ -22,7 +22,7 @@ class Facial_Landarks_DetectionModel:
         self.input_shape=self.model.inputs[self.input_name].shape
         self.output_name=next(iter(self.model.outputs))
         self.output_shape=self.model.outputs[self.output_name].shape
-        
+
 
     def load_model(self):
         '''
@@ -62,11 +62,22 @@ class Facial_Landarks_DetectionModel:
     Before feeding the data into the model for inference,
     you might have to preprocess it. This function is where you can do that.
     '''
-        raise NotImplementedError
+        image_ct = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        self.image=cv2.resize(image_ct,(self.input_shape[3],self.input_shape[2]))   ## cv2.resize(frame, (w, h))
+        self.image=self.image.transpose((2, 0, 1))  
+        self.image=self.image.reshape(1, *self.image.shape)
+       
+        return self.image
 
     def preprocess_output(self, outputs):
     '''
     Before feeding the output of this model to the next model,
     you might have to preprocess the output. This function is where you can do that.
     '''
-        raise NotImplementedError
+        res=outputs[self.output_name][0]
+        lx = res[0].tolist()[0][0]
+        ly = res[1].tolist()[0][0]
+        rx = res[2].tolist()[0][0]
+        ry = res[3].tolist()[0][0]
+
+        return(lx,ly,rx,ry)
