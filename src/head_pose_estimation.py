@@ -34,11 +34,12 @@ class HeadPose_Estimation_Model:
         raise NotImplementedError
 
     def preprocess_input(self, image):
-    '''
-    Before feeding the data into the model for inference,
-    you might have to preprocess it. This function is where you can do that.
-    '''
-        raise NotImplementedError
+    
+        self.image=cv2.resize(image,(self.input_shape[3],self.input_shape[2])) ## cv2.resize(frame, (w, h))
+        self.image=self.image.transpose((2, 0, 1))  
+        self.image=self.image.reshape(1, *self.image.shape)
+        
+        return self.image
 
     def preprocess_output(self, outputs):
     '''
