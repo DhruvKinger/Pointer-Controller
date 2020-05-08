@@ -42,7 +42,7 @@ Computer Pointer Controller app focusses on changing the position of mouse Point
 *TODO:* Explain how to run a basic demo of your model.
 
 ## Documentation
-## Models Used
+### Models Used
 * [Face Detection Model](https://docs.openvinotoolkit.org/latest/_models_intel_face_detection_adas_binary_0001_description_face_detection_adas_binary_0001.html)
 
 * [Facial Landmarks Detection Model](https://docs.openvinotoolkit.org/latest/_models_intel_landmarks_regression_retail_0009_description_landmarks_regression_retail_0009.html)
@@ -50,6 +50,20 @@ Computer Pointer Controller app focusses on changing the position of mouse Point
 * [Head Pose Estimation Model](https://docs.openvinotoolkit.org/latest/_models_intel_head_pose_estimation_adas_0001_description_head_pose_estimation_adas_0001.html)
 
 * [Gaze Estimation Model](https://docs.openvinotoolkit.org/latest/_models_intel_gaze_estimation_adas_0002_description_gaze_estimation_adas_0002.html)
+
+### Command Line ArgumentS Used
+Following are the command line arguments that can be used for running main.py file.
+* -fd (required) : Specify the path of Face Detection model's xml file
+* -fl (required) : Path to .xml file of Facial Landmark Detection model
+
+* -hp (required) : Path to .xml file of Head Pose Estimation model
+* -ge (required) : Path to .xml file of Gaze Estimation model.
+* -i (required) : Specify the path of input video file or enter cam for taking input video from webcam
+
+* -d (optional) : Specify the target device to infer the video file on the model. Suppoerted devices are: CPU, GPU, FPGA (For running on FPGA used HETERO:FPGA,CPU), MYRIAD.
+* -l (optional) : Specify the absolute path of cpu extension if some layers of models are not supported on the device.
+* -pt (optional): Probability threshold for model to detect the face accurately from the video frame.
+
 ## Benchmarks
 *TODO:* Include the benchmark results of running your model on multiple hardwares and multiple model precisions. Your benchmarks can include: model loading time, input/output processing time, model inference time etc.
 
