@@ -60,7 +60,8 @@ Following are the command line arguments that can be used for running main.py fi
 * -ge (required) : Path to .xml file of Gaze Estimation model.
 * -i (required) : Specify the path of input video file or enter cam for taking input video from webcam
 
-* -d (optional) : Specify the target device to infer the video file on the model. Suppoerted devices are: CPU, GPU, FPGA (For running on FPGA used HETERO:FPGA,CPU), MYRIAD.
+* -d (optional) : Specify the target device to infer on,"CPU, GPU, FPGA or MYRIAD is acceptable. Looks
+                        for a suitable plugin for device specified "(CPU by default)".
 * -l (optional) : Specify the absolute path of cpu extension if some layers of models are not supported on the device.
 * -pt (optional): Probability threshold for model to detect the face accurately from the video frame.
 
