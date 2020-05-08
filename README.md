@@ -46,7 +46,7 @@ Computer Pointer Controller app focusses on changing the position of mouse Point
 * cd <project-repo-path>/src
 * Run the main.py file
  
-python main.py -fd <Path of xml file of face detection model> -fl <Path of xml file of facial landmarks detection model> -hp <Path of   xml file of head pose estimation model> -ge <Path of xml file of gaze estimation model> -i <Path of input video file or enter cam for   taking input video from webcam>  
+python main.py -fd 'Path of xml file of face detection model' -fl 'Path of xml file of facial landmarks detection model' -hp 'Path of   xml file of head pose estimation model' -ge 'Path of xml file of gaze estimation model' -i 'Path of input video file or enter cam for   taking input video from webcam' 
 
  
  
