@@ -48,13 +48,18 @@ class Gaze_Estimation_Model:
 
 
 
-    def predict(self, image):
-        '''
-        TODO: You will need to complete this method.
-        This method is meant for running predictions on the input image.
-        '''
-        raise NotImplementedError
+    def predict(self, l_eye,r_eye,angle):
+        
 
+        le_img_processed, re_img_processed = self.preprocess_input(l_eye, r_eye)
+
+        outputs = self.exec_net.infer({'head_pose_angles':angle, 'left_eye_image':le_img_processed, 'right_eye_image':re_img_processed})
+        
+        new_mouse_coord, gaze_vector = self.preprocess_output(outputs,angle)
+
+        return new_mouse_coord, gaze_vector
+
+    
     def check_model(self):
         raise NotImplementedError
 
@@ -78,7 +83,7 @@ class Gaze_Estimation_Model:
         return self.leye,self.reye
 
 
-    def preprocess_output(self, outputs):
+    def preprocess_output(self, outputs,angle):
     '''
     Before feeding the output of this model to the next model,
     you might have to preprocess the output. This function is where you can do that.

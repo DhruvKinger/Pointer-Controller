@@ -45,3 +45,24 @@ def build_argparser():
     
     
     return parser
+
+
+def main():
+
+    args = build_argparser().parse_args()
+
+    logger = logging.getLogger()
+    inputFilePath = args.input
+    inputFeeder = None
+    
+    if inputFilePath.lower()=="cam":
+            inputFeeder = InputFeeder("cam")
+    else:
+        if not os.path.isfile(inputFilePath):
+            logger.error("Unable to find specified video file")
+            exit(1)
+        inputFeeder = InputFeeder("video",inputFilePath)
+    
+
+if __name__ == '__main__':
+    main() 
