@@ -31,6 +31,13 @@ def build_argparser():
     parser.add_argument("-i", "--input", required=True, type=str,
                         help="Path to video file or enter cam for webcam")
 
+    parser.add_argument("-flags", "--Flags", required=False, nargs='+',
+                        default=[],
+                        help="Specify the flags from fd, fl, hp, ge like --flags fd hp fl (Seperate each flag by space)"
+                             "for see the visualization of different model outputs of each frame," 
+                             "fd for Face Detection, fl for Facial Landmark Detection"
+                             "hp for Head Pose Estimation, ge for Gaze Estimation." )
+
     parser.add_argument("-l", "--cpu_extension", required=False, type=str,
                         default=None,
                         help="MKLDNN (CPU)-targeted custom layers."
@@ -53,6 +60,7 @@ def build_argparser():
 def main():
 
     args = build_argparser().parse_args()
+    Flags = args.Flags
 
     logger = logging.getLogger()
     inputFilePath = args.input
