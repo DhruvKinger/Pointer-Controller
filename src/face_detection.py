@@ -95,10 +95,7 @@ class Face_Detection_Model:
         
 
     def preprocess_output(self, outputs,prob_threshold):
-    '''
-    Before feeding the output of this model to the next model,
-    you might have to preprocess the output. This function is where you can do that.
-    '''
+   
         coords =[]
         outs = outputs[self.output_names][0][0]
         for out in outs:

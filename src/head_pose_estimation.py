@@ -9,7 +9,7 @@ from openvino.inference_engine import IECore
 
 class HeadPose_Estimation_Model:
     
-        def __init__(self, model_name, device='CPU', extensions=None):
+    def __init__(self, model_name, device='CPU', extensions=None):
         
         self.model_weights=model_name+'.bin'
         self.model_structure=model_name+'.xml'

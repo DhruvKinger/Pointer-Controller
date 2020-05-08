@@ -64,10 +64,7 @@ class Gaze_Estimation_Model:
         raise NotImplementedError
 
     def preprocess_input(self, leye,reye):
-    '''
-    Before feeding the data into the model for inference,
-    you might have to preprocess it. This function is where you can do that.
-    '''
+    
         self.leye=cv2.resize(leye,(self.input_shape[3],self.input_shape[2]))   ## cv2.resize(frame, (w, h))
         
         self.reye=cv2.resize(reye,(self.input_shape[3],self.input_shape[2]))   ## cv2.resize(frame, (w, h))
@@ -84,8 +81,5 @@ class Gaze_Estimation_Model:
 
 
     def preprocess_output(self, outputs,angle):
-    '''
-    Before feeding the output of this model to the next model,
-    you might have to preprocess the output. This function is where you can do that.
-    '''
+    
         raise NotImplementedError

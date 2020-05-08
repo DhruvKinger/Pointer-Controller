@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
+
 import cv2
 import os
+import sys
 import logging
 import numpy as np
 from argparse import ArgumentParser
