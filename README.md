@@ -41,6 +41,10 @@ Computer Pointer Controller app focusses on changing the position of mouse Point
 ## Demo
 *TODO:* Explain how to run a basic demo of your model.
 
+ python main.py -fd E:\Downloads\Pointer Controller\models\Face detection\face-detection-adas-binary-0001.xml - fl E:\Downloads\Pointer Controller\models\Landmarks detection\FP32\landmarks-regression-retail-0009.xml  -hp E:\Downloads\Pointer Controller\models\Head Pose\FP32\head-pose-estimation-adas-0001.xml  -ge E:\Downloads\Pointer Controller\models\Gaze Estimation\FP32\gaze-estimation-adas-0002.xml  -i E:\Downloads\Pointer Controller\bin\demo.mp4
+ 
+ 
+
 ## Documentation
 ### Models Used
 * [Face Detection Model](https://docs.openvinotoolkit.org/latest/_models_intel_face_detection_adas_binary_0001_description_face_detection_adas_binary_0001.html)
