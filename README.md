@@ -16,9 +16,18 @@ Computer Pointer Controller app focusses on changing the position of mouse Point
 
 * Still If you want to try them out, then you can delete the models folder from your downloaded zip file and follow thses steps mentioned below.
 
-+ You can either download these + [models](#Models Used) manually from here:- https://download.01.org/opencv/2020/openvinotoolkit/2020.3/open_model_zoo/models_bin/1/
++ You can either download these models mentioned below manually from here:- https://download.01.org/opencv/2020/openvinotoolkit/2020.3/open_model_zoo/models_bin/1/
 <br>
 ## Or
++ You can run thses commands:-
+## 1. Face Detection Model
+* python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "face-detection-adas-binary-0001"
+## 2. Head Pose Estimation Model
+* python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "head-pose-estimation-adas-0001"
+## 3. Facial Landmarks Detection Model
+* python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "landmarks-regression-retail-0009"
+## 4. Gaze Estimation Model
+* python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "gaze-estimation-adas-0002"
 
 
 ## Demo
