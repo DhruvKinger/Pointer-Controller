@@ -5,7 +5,7 @@ Computer Pointer Controller app focusses on changing the position of mouse Point
 
 ## Project Set Up and Installation
 
-## Note- You have to sucessfully install OpenVino on Your Local System.Here is the installation [guide](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_windows.html) for it.
+### Note- You have to sucessfully install OpenVino on Your Local System.Here is the installation [guide](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_windows.html) for it.
 <br>You can run it on Linux,Windows as well as macOS. 
 * After you are done with that, you can follow these steps mentioned below to run the project. 
 * Clone this repository:- https://github.com/DhruvKinger/Pointer-Controller
@@ -18,22 +18,22 @@ Computer Pointer Controller app focusses on changing the position of mouse Point
 
 + You can either download these models mentioned below manually from here:- https://download.01.org/opencv/2020/openvinotoolkit/2020.3/open_model_zoo/models_bin/1/
 <br>
-### Or You can run thses commands:-
+### Or You can run these commands:-
 
 
- ## 1. Face Detection Model
+ ### 1. Face Detection Model
 
 * python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "face-detection-adas-binary-0001"
 
-## 2. Head Pose Estimation Model
+### 2. Head Pose Estimation Model
 
 * python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "head-pose-estimation-adas-0001"
 
-## 3. Facial Landmarks Detection Model
+### 3. Facial Landmarks Detection Model
 
 * python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "landmarks-regression-retail-0009"
 
-## 4. Gaze Estimation Model
+### 4. Gaze Estimation Model
 
 * python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "gaze-estimation-adas-0002"
 
