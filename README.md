@@ -42,10 +42,14 @@ Computer Pointer Controller app focusses on changing the position of mouse Point
 * Open a new terminal and run the following commands:-
 * cd C:\Program Files (x86)\IntelSWTools\openvino\bin\
 * setupvars.bat
-With these commands your path is intialized,Now change directory to source directory of cloned project.
+#### With these commands your path is intialized,Now change directory to source directory of cloned project.
 * cd <project-repo-path>/src
+* Run the main.py file
+ 
+* python main.py -fd <Path of xml file of face detection model> -fl <Path of xml file of facial landmarks detection model> 
+-hp <Path of xml file of head pose estimation model> -ge <Path of xml file of gaze estimation model> 
+ -i <Path of input video file or enter cam for taking input video from webcam>  
 
-python main.py -fd E:\Downloads\Pointer Controller\models\Face detection\face-detection-adas-binary-0001.xml - fl E:\Downloads\Pointer Controller\models\Landmarks detection\FP32\landmarks-regression-retail-0009.xml  -hp E:\Downloads\Pointer Controller\models\Head Pose\FP32\head-pose-estimation-adas-0001.xml  -ge E:\Downloads\Pointer Controller\models\Gaze Estimation\FP32\gaze-estimation-adas-0002.xml  -i E:\Downloads\Pointer Controller\bin\demo.mp4
  
  
 
