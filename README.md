@@ -16,6 +16,10 @@ Computer Pointer Controller app focusses on changing the position of mouse Point
 
 * Still If you want to try them out, then you can delete the models folder from your downloaded zip file and follow thses steps mentioned below.
 
++ You can either download these +[models](#Models Used) manually from here https://download.01.org/opencv/2020/openvinotoolkit/2020.3/open_model_zoo/models_bin/1/
+<br>
+## Or
+
 
 ## Demo
 *TODO:* Explain how to run a basic demo of your model.
