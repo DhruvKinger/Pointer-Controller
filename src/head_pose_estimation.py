@@ -19,6 +19,11 @@ class HeadPose_Estimation_Model:
         self.net=None
         self.exec_net=None
 
+
+        self.input_name = next(iter(self.model.inputs))
+        self.input_shape = self.network.inputs[self.input_name].shape
+        self.output_names = [a for a in self.model.outputs.keys()]
+
     def load_model(self):
         '''
         TODO: You will need to complete this method.
@@ -37,6 +42,7 @@ class HeadPose_Estimation_Model:
         unsupported_layers = [layer for layer in self.model.layers.keys() if layer not in supported_layers]
 
         if len(unsupported_layers) > 0:
+            print("After adding the extension still unsupported layers found")
             sys.exit(1)
 
 
@@ -44,11 +50,12 @@ class HeadPose_Estimation_Model:
         
 
     def predict(self, image):
-        '''
-        TODO: You will need to complete this method.
-        This method is meant for running predictions on the input image.
-        '''
-        raise NotImplementedError
+        
+        self.processed_image=self.preprocess_input(image)
+        outputs = self.exec_net.infer({self.input_name:self.processed_image})
+        Result = self.preprocess_output(outputs)
+        return Result
+
 
     def check_model(self):
         raise NotImplementedError
@@ -62,8 +69,10 @@ class HeadPose_Estimation_Model:
         return self.image
 
     def preprocess_output(self, outputs):
-    '''
-    Before feeding the output of this model to the next model,
-    you might have to preprocess the output. This function is where you can do that.
-    '''
-        raise NotImplementedError
+    
+        res = []
+        res.append(outputs['angle_y_fc'].tolist()[0][0])
+        res.append(outputs['angle_p_fc'].tolist()[0][0])
+        res.append(outputs['angle_r_fc'].tolist()[0][0])
+        return res
+

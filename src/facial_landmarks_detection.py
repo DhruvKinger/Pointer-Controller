@@ -46,6 +46,7 @@ class Facial_Landarks_DetectionModel:
         unsupported_layers = [layer for layer in self.model.layers.keys() if layer not in supported_layers]
 
         if len(unsupported_layers) > 0:
+            print("After adding the extension still unsupported layers found")
             sys.exit(1)
 
 
