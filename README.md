@@ -12,17 +12,16 @@ Computer Pointer Controller app focusses on changing the position of mouse Point
 * Now you have to install the OpenVino Environment.You can do this by the following command.
 * source /opt/intel/openvino/bin/setupvars.sh -pyver 3.5
 
-## Note: One of the most Important step is to download the models.You can skip this step as I have already downloaded and attached them in the models Folder.
+### Note: One of the most Important step is to download the models.You can skip this step as I have already downloaded and attached them in the models Folder.
 
 * Still If you want to try them out, then you can delete the models folder from your downloaded zip file and follow thses steps mentioned below.
 
 + You can either download these models mentioned below manually from here:- https://download.01.org/opencv/2020/openvinotoolkit/2020.3/open_model_zoo/models_bin/1/
 <br>
-## Or
+### Or You can run thses commands:-
 
- * You can run thses commands:-
 
-## 1. Face Detection Model
+ ## 1. Face Detection Model
 
 * python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "face-detection-adas-binary-0001"
 
