@@ -57,26 +57,30 @@ class FacialLandarksDetectionModel:
         self.processed_image=self.preprocess_input(image)
         outputs = self.exec_net.infer({self.input_name:self.processed_image})
         coords = self.preprocess_output(outputs)
+        
         h=image.shape[0]
         w=image.shape[1]
+        
         coords = coords* np.array([w, h, w, h])
         coords = coords.astype(np.int32) 
 
         l_xmin=coords[0]-5
-        l_ymin=coords[1]-5
-        
         l_xmax=coords[0]+5
+
+
+        l_ymin=coords[1]-5            
         l_ymax=coords[1]+5
         
         r_xmin=coords[2]-5
-        r_ymin=coords[3]-5
-        
         r_xmax=coords[2]+5
+
+        r_ymin=coords[3]-5               
         r_ymax=coords[3]+5
         
 
         left_eye =  image[l_ymin:l_ymax, l_xmin:l_xmax]
         right_eye = image[r_ymin:r_ymax, r_xmin:r_xmax]
+
         eye_coords = [[l_xmin,l_ymin,l_xmax,l_ymax], [r_xmin,r_ymin,r_xmax,r_ymax]]
         
         return left_eye, right_eye, eye_coords
