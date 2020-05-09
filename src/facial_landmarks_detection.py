@@ -7,7 +7,7 @@ import numpy as np
 from openvino.inference_engine import IECore
 
 
-class Facial_Landarks_DetectionModel:
+class FacialLandarksDetectionModel:
     '''
     Class for the Face Detection Model.
     '''

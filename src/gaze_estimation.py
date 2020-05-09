@@ -8,7 +8,7 @@ import math
 from openvino.inference_engine import IECore
 
 
-class Gaze_Estimation_Model:
+class GazeEstimationModel:
     '''
     Class for the Face Detection Model.
     '''

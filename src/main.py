@@ -8,10 +8,10 @@ import numpy as np
 from argparse import ArgumentParser
 from input_feeder import InputFeeder
 from mouse_controller import MouseController
-from face_detection import Face_Detection_Model
-from facial_landmarks_detection import Facial_Landarks_DetectionModel
-from gaze_estimation import Gaze_Estimation_Model
-from head_pose_estimation import HeadPose_Estimation_Model
+from face_detection import FaceDetectionModel
+from facial_landmarks_detection import FacialLandarksDetectionModel
+from gaze_estimation import GazeEstimationModel
+from head_pose_estimation import HeadPoseEstimationModel
 
 def build_argparser():
     """
@@ -73,6 +73,10 @@ def main():
             logger.error("Unable to find specified video file")
             exit(1)
         inputFeeder = InputFeeder("video",inputFilePath)
+
+    Dir = {'FaceDetectionModel':args.facedetectionmodel, 'FacialLandmarksDetectionModel':args.faciallandmarkmodel, 
+    'GazeEstimationModel':args.gazeestimationmodel, 'HeadPoseEstimationModel':args.headposemodel}
+
     
 
 if __name__ == '__main__':

@@ -7,7 +7,7 @@ import numpy as np
 from openvino.inference_engine import IECore
 
 
-class Face_Detection_Model:
+class FaceDetectionModel:
     '''
     Class for the Face Detection Model.
     '''

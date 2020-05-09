@@ -7,7 +7,7 @@ import numpy as np
 from openvino.inference_engine import IECore
 
 
-class HeadPose_Estimation_Model:
+class HeadPoseEstimationModel:
     
     def __init__(self, model_name, device='CPU', extensions=None):
         
