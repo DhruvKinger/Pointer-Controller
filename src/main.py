@@ -151,6 +151,15 @@ def main():
                 
             cv2.imshow("visualization",cv2.resize(new_frame,(500,500)))
 
+         if count%5==0:   
+            Mc.move(new_coord[0],new_coord[1])    
+         if key==27:
+                break
+
+    logger.error("Video Done...")
+    cv2.destroyAllWindows()
+    inputFeeder.close()
+
 
 
 
