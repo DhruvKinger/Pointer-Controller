@@ -9,8 +9,9 @@ Computer Pointer Controller app focusses on changing the position of mouse Point
 <br>You can run it on Linux,Windows as well as macOS. 
 * After you are done with that, you can follow these steps mentioned below to run the project. 
 * Clone this repository:- https://github.com/DhruvKinger/Pointer-Controller
-* Now you have to install the OpenVino Environment.You can do this by the following command.
-* source /opt/intel/openvino/bin/setupvars.sh -pyver 3.5
+* Now you have to initialze the OpenVino Environment.You can do this by the following command.
+* cd C:\Program Files (x86)\IntelSWTools\openvino\bin\
+* setupvars.bat
 
 ### Note: One of the most Important step is to download the models.You can skip this step as I have already downloaded and attached them in the models Folder.
 
