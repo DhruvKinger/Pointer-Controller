@@ -136,7 +136,6 @@ def main():
                 cv2.rectangle(croppedFace, (eye_coords[0][0]-5, eye_coords[0][1]-5), (eye_coords[0][2]+5, eye_coords[0][3]+5), (0,255,0), 3)
                 cv2.rectangle(croppedFace, (eye_coords[1][0]-5, eye_coords[1][1]-5), (eye_coords[1][2]+5, eye_coords[1][3]+5), (0,255,0), 3)
                 
-
             if 'hp' in Flags:
                 cv2.putText(new_frame, "Pose Angles: yaw:{:.2f} | pitch:{:.2f} | roll:{:.2f}".format(hp_out[0],hp_out[1],hp_out[2]), (10, 20), cv2.FONT_HERSHEY_COMPLEX, 0.25, (0, 255, 0), 1)
             
