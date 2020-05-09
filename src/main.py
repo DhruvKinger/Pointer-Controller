@@ -160,17 +160,5 @@ def main():
     inputFeeder.close()
 
 
-
-
-    
-
-    
-
-
-
-
-
-
-
 if __name__ == '__main__':
     main() 
