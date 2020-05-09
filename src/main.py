@@ -9,7 +9,7 @@ from argparse import ArgumentParser
 from input_feeder import InputFeeder
 from mouse_controller import MouseController
 from face_detection import FaceDetectionModel
-from facial_landmarks_detection import FacialLandarksDetectionModel
+from facial_landmarks_detection import FacialLandmarksDetectionModel
 from gaze_estimation import GazeEstimationModel
 from head_pose_estimation import HeadPoseEstimationModel
 

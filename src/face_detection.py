@@ -4,7 +4,8 @@ This has been provided just to give you an idea of how to structure your model c
 '''
 import cv2
 import numpy as np
-from openvino.inference_engine import IECore
+import os
+from openvino.inference_engine import IECore,IENetwork
 
 
 class FaceDetectionModel:
@@ -15,18 +16,48 @@ class FaceDetectionModel:
         '''
         TODO: Use this to set your instance variables.
         '''
-        self.model_weights=model_name+'.bin'
-        self.model_structure=model_name+'.xml'
+        '''self.model_name=model_name
+        self.model_structure=model_name
+        self.model_weights=os.path.splitext(self.model_structure)[0] + ".bin"
+       
         self.device=device
         self.extensions=extensions
         self.plugin=None
         self.net=None
+        self.network=None
         self.exec_net=None
 
-       # try:
-          #  self.model=IENetwork(self.model_structure, self.model_weights)
-       # except Exception as e:
-            #raise ValueError("Could not Initialise the network. Have you enterred the correct model path?")
+        try:
+            self.model=IENetwork(self.model_structure, self.model_weights)
+        except Exception as e:
+            raise ValueError("Could not Initialise the network. Have you enterred the correct model path?")
+
+        self.input_name=next(iter(self.model.inputs))
+        self.input_shape=self.model.inputs[self.input_name].shape
+        self.output_name=next(iter(self.model.outputs))
+        self.output_shape=self.model.outputs[self.output_name].shape
+'''
+
+
+
+        self.model_name = model_name
+        self.device = device
+        self.extensions = extensions
+        self.model_structure = self.model_name
+        self.model_weights = self.model_name.split('.')[0]+'.bin'
+        self.plugin = None
+        self.network = None
+        self.exec_net = None
+        self.input_name = None
+        self.input_shape = None
+        self.output_names = None
+        self.output_shape = None
+
+
+        try:
+            self.model=IENetwork(self.model_structure, self.model_weights)
+        except Exception as e:
+            raise ValueError("Could not Initialise the network. Have you enterred the correct model path?")
 
         self.input_name=next(iter(self.model.inputs))
         self.input_shape=self.model.inputs[self.input_name].shape
@@ -34,31 +65,45 @@ class FaceDetectionModel:
         self.output_shape=self.model.outputs[self.output_name].shape
 
 
-        
+             
     def load_model(self):
-        '''
-        TODO: You will need to complete this method.
-        This method is for loading the model to the device specified by the user.
-        If your model requires any Plugins, this is where you can load them.
+        
+        self.core=IECore()
+        self.exec_net=self.core.load_network(network=self.model,device_name=self.device,num_requests=1)
+        
+        
         '''
         
-        self.plugin=IECore()
-        self.model=IECore().read_network(self.model_structure, self.model_weights)  # model=IEnetwork()
 
-        if not self.extensions==None:
-                print("Add cpu_extension")
+
+        self.plugin = IECore()
+        self.network = self.plugin.read_network(model=self.model_structure, weights=self.model_weights)
+        supported_layers = self.plugin.query_network(network=self.network, device_name=self.device)
+        unsupported_layers = [l for l in self.network.layers.keys() if l not in supported_layers]
+        
+
+
+        
+        if len(unsupported_layers)!=0 and self.device=='CPU':
+            print("unsupported layers found:{}".format(unsupported_layers))
+            if not self.extensions==None:
+                print("Adding cpu_extension")
                 self.plugin.add_extension(self.extensions, self.device)
-
+                supported_layers = self.plugin.query_network(network = self.network, device_name=self.device)
+                unsupported_layers = [l for l in self.network.layers.keys() if l not in supported_layers]
+                if len(unsupported_layers)!=0:
+                    print("After adding the extension still unsupported layers found")
+                    exit(1)
+                print("After adding the extension the issue is resolved")
+            else:
+                print("Give the path of cpu extension")
+                exit(1)
+        '''       
+       # self.exec_net = self.core.load_network(network=self.model, device_name=self.device,num_requests=1)
         
-        supported_layers = self.IECore().query_network(network=self.model, device_name=self.device)
-        unsupported_layers = [layer for layer in self.model.layers.keys() if layer not in supported_layers]
+        
+       
 
-        if len(unsupported_layers) > 0:
-            print("After adding the extension still unsupported layers found")
-            sys.exit(1)
-
-
-        self.exec_net = self.plugin.load_network(network=self.model, device_name=self.device,num_requests=1)
 
 
     def predict(self, image):

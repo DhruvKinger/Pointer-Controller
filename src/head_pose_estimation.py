@@ -4,25 +4,39 @@ This has been provided just to give you an idea of how to structure your model c
 '''
 import cv2
 import numpy as np
-from openvino.inference_engine import IECore
+from openvino.inference_engine import IECore,IENetwork
 
 
 class HeadPoseEstimationModel:
     
     def __init__(self, model_name, device='CPU', extensions=None):
         
-        self.model_weights=model_name+'.bin'
-        self.model_structure=model_name+'.xml'
-        self.device=device
-        self.extensions=extensions
-        self.plugin=None
-        self.net=None
-        self.exec_net=None
+        self.model_name = model_name
+        self.device = device
+        self.extensions = extensions
+        self.model_structure = self.model_name
+        self.model_weights = self.model_name.split('.')[0]+'.bin'
+        self.plugin = None
+        self.network = None
+        self.exec_net = None
+        self.input_name = None
+        self.input_shape = None
+        self.output_names = None
+        self.output_shape = None
+
+
+        try:
+            self.model=IENetwork(self.model_structure, self.model_weights)
+        except Exception as e:
+            raise ValueError("Could not Initialise the network. Have you enterred the correct model path?")
 
 
         self.input_name = next(iter(self.model.inputs))
-        self.input_shape = self.network.inputs[self.input_name].shape
+        self.input_shape = self.model.inputs[self.input_name].shape
         self.output_names = [a for a in self.model.outputs.keys()]
+
+
+        
 
     def load_model(self):
         '''
@@ -30,7 +44,12 @@ class HeadPoseEstimationModel:
         This method is for loading the model to the device specified by the user.
         If your model requires any Plugins, this is where you can load them.
         '''
-        self.plugin=IECore()
+
+        self.core=IECore()
+        self.exec_net=self.core.load_network(network=self.model,device_name=self.device,num_requests=1)
+
+
+        '''self.plugin=IECore()
         self.model=IECore().read_network(self.model_structure, self.model_weights)  # model=IEnetwork()
 
         if not self.extensions==None:
@@ -46,7 +65,10 @@ class HeadPoseEstimationModel:
             sys.exit(1)
 
 
-        self.exec_net = self.plugin.load_network(network=self.model, device_name=self.device,num_requests=1)
+        self.exec_net = self.plugin.load_network(network=self.model, device_name=self.device,num_requests=1)'''
+
+
+
         
 
     def predict(self, image):
