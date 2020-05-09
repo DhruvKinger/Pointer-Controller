@@ -118,16 +118,16 @@ def main():
             continue
 
 
-         hp_out=Hp.predict(croppedFace.copy())
+        hp_out=Hp.predict(croppedFace.copy())
          
-         l_eye,r_eye,eye_coords=Fl.predict(croppedFace.copy())    # Main funcn's doing all our task
+        l_eye,r_eye,eye_coords=Fl.predict(croppedFace.copy())    # Main funcn's doing all our task
 
-         new_coord,gaze_vector=Ge.predict(l_eye,r_eye,hp_out)
+        new_coord,gaze_vector=Ge.predict(l_eye,r_eye,hp_out)
 
 
          ## Now comes the importance of all the flags
 
-         if (not len(Flags)==0):
+        if (not len(Flags)==0):
             new_frame = frame.copy()
             if 'fd' in Flags:
                 new_frame = croppedFace
@@ -150,9 +150,9 @@ def main():
                 
             cv2.imshow("visualization",cv2.resize(new_frame,(500,500)))
 
-         if count%5==0:   
+        if count%5==0:   
             Mc.move(new_coord[0],new_coord[1])    
-         if key==27:
+        if key==27:
                 break
 
     logger.error("Video Done...")
