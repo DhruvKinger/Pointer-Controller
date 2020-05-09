@@ -96,6 +96,22 @@ def main():
     Hp.load_model()
     Ge.load_model()
 
+    count=0
+
+    for ret, frame in inputFeeder.next_batch():
+        if not ret:
+            break
+
+
+        count++
+
+        if count%5==0:
+            cv2.imshow('video',cv2.resize(frame,(500,500)))
+    
+        key = cv2.waitKey(60)
+        
+
+
     
 
     
