@@ -88,5 +88,15 @@ def main():
     Hp = HeadPoseEstimationModel(Dir['HeadPoseEstimationModel'], args.device, args.cpu_extension)
     Mc = MouseController('medium','fast')
 
+
+    ## Loading part starts
+    inputFeeder.load_data()
+    Fd.load_model()
+    Fl.load_model()
+    Hp.load_model()
+    Ge.load_model()
+
+    
+
 if __name__ == '__main__':
     main() 
