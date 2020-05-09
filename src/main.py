@@ -77,7 +77,16 @@ def main():
     Dir = {'FaceDetectionModel':args.facedetectionmodel, 'FacialLandmarksDetectionModel':args.faciallandmarkmodel, 
     'GazeEstimationModel':args.gazeestimationmodel, 'HeadPoseEstimationModel':args.headposemodel}
 
-    
+    for fileKey in Dir.keys():
+        if not os.path.isfile(Dir[fileKey]):
+            logger.error("Unable to find specified "+fileKey+" xml file")
+            exit(1)
+            
+    Fd = FaceDetectionModel(Dir['FaceDetectionModel'], args.device, args.cpu_extension)
+    Fl = FacialLandmarksDetectionModel(Dir['FacialLandmarksDetectionModel'], args.device, args.cpu_extension)
+    Ge = GazeEstimationModel(Dir['GazeEstimationModel'], args.device, args.cpu_extension)
+    Hp = HeadPoseEstimationModel(Dir['HeadPoseEstimationModel'], args.device, args.cpu_extension)
+    Mc = MouseController('medium','fast')
 
 if __name__ == '__main__':
     main() 
