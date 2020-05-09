@@ -22,6 +22,10 @@ class GazeEstimationModel:
         self.net=None
         self.exec_net=None
 
+        self.input_name = [i for i in self.model.inputs.keys()]
+        self.input_shape = self.model.inputs[self.input_name[1]].shape
+        self.output_names = [a for a in self.model.outputs.keys()]
+
     def load_model(self):
         '''
         TODO: You will need to complete this method.
@@ -82,4 +86,13 @@ class GazeEstimationModel:
 
     def preprocess_output(self, outputs,angle):
     
-        raise NotImplementedError
+        
+        gaze_vector = outputs[self.output_names[0]].tolist()[0]
+       
+        x = angle[2] 
+        cosValue = math.cos(x * math.pi / 180.0)
+        sinValue = math.sin(x * math.pi / 180.0)
+        
+        xc = gaze_vector[0] * cosValue + gaze_vector[1] * sinValue
+        yc = -gaze_vector[0] *  sinValue+ gaze_vector[1] * cosValue
+        return (xc,yc), gaze_vector
