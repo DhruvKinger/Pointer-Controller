@@ -105,9 +105,13 @@ Following are the command line arguments that can be used for running main.py fi
 * The benchmark result of running on GPU with multiple model precisions are :
 ![](https://github.com/DhruvKinger/Pointer-Controller/blob/master/bin/GPU.PNG)
 ## Results
-* I have ran mine models on differnt hardwares with different precisions:
-For running on CPU,I tried 8 combinations with differnt precisions like INT8,FP16,FP32.I have tried to reduce precision Value but precision also reduces accuracy. 
-### Note: So when you use lower precision model then you can get lower accuracy than higher precision model.
+* I have ran mine models on different hardwares with different precisions:
+For running on CPU,I tried 8 combinations with differnt precisions like INT8,FP16,FP32.
+I have tried to reduce precision Value but precision also reduces accuracy. 
+#### Note: So when you use lower precision model then you can get lower accuracy than higher precision model.
+* I have tried 8 combn's on GPU as well.
+
+
 
 ## Stand Out Suggestions
 I have tried to build an inference pipeline for both video file and webcam feed as input. Allowing the user to select their input option in the command line arguments:
