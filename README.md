@@ -3,6 +3,9 @@
 ## Introduction
 Computer Pointer Controller app focusses on changing the position of mouse Pointer by the direction of eyes and Head Pose.This can take Video file or Webcam as Input and then can perform accordingly.It uses combination of different models to give us a desired output.
 
+## Project Video
+
+[![Watch Video ]](https://www.youtube.com/watch?v=blI_yKZoqrY)
 ## Project Set Up and Installation
 
 ### Note- You have to sucessfully install OpenVino on Your Local System.Here is the installation [guide](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_windows.html) for it.
