@@ -45,10 +45,18 @@ class FacialLandmarksDetectionModel:
 
     def load_model(self):
         
+        self.plugin=IECore()       
+        
+        supported_layers = self.plugin.query_network(network=self.model, device_name=self.device)
+        unsupported_layers = [l for l in self.model.layers.keys() if l not in supported_layers]
 
-        self.core=IECore()
-        self.exec_net=self.core.load_network(network=self.model,device_name=self.device,num_requests=1)
-   
+        
+        if len(unsupported_layers)!=0:
+            print("unsupported layers found")
+            exit(1)
+           
+       
+        self.exec_net=self.plugin.load_network(network=self.model,device_name=self.device,num_requests=1)
         
 
     def predict(self, image):
