@@ -100,8 +100,24 @@ Following are the command line arguments that can be used for running main.py fi
 
 
 ## Benchmarks
-*TODO:* Include the benchmark results of running your model on multiple hardwares and multiple model precisions. Your benchmarks can include: model loading time, input/output processing time, model inference time etc.
+The benchmark result of running all the 4 models in CPU with multiple model precisions are :
 
+* FP32:
+
+The total model loading time is : 3.361sec
+The total inference time is : 11.4sec
+The total FPS is : 0.35fps
+
+* FP16:
+
+The total model loading time is : 1.77sec
+The total inference time is : 8.7sec
+The total FPS is : 0.45fps
+* INT8:
+
+The total model loading time is : 6.03sec
+The total inference time is : 8.7sec
+The total FPS is : 0.45fps
 ## Results
 *TODO:* Discuss the benchmark results and explain why you are getting the results you are getting. For instance, explain why there is difference in inference time for FP32, FP16 and INT8 models.
 
