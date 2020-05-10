@@ -106,13 +106,14 @@ Following are the command line arguments that can be used for running main.py fi
 ![](https://github.com/DhruvKinger/Pointer-Controller/blob/master/bin/GPU.PNG)
 ## Results
 * I have ran mine models on different hardwares with different precisions:
-For running on CPU,I tried 8 combinations with differnt precisions like INT8,FP16,FP32.
+For running on CPU,I tried 8 combinations with different precisions like INT8,FP16,FP32.
 I have tried to reduce precision Value but precision also reduces accuracy. 
 #### Note: So when you use lower precision model then you can get lower accuracy than higher precision model.
 * I have tried 8 combn's on GPU as well.
 #### Key Points:
 1. GPU possed more Frames specailly when precision was FP16 because GPU has severals Execution units and their instruction sets are optimized for 16bit floating point data types.
-2. 
+2. We found for CPU FP32 was a best fit even though I tried to reduce some precisions but FP32 was giving us the best results whether we compare FPS,Model Load Time or even Inference Time.
+3. 
 
 
 
