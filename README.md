@@ -50,7 +50,8 @@ Computer Pointer Controller app focusses on changing the position of mouse Point
 * cd <project-repo-path>/src
 * Run the main.py file
  
-* python main.py -fd 'Path of xml file of face detection model' -fl 'Path of xml file of facial landmarks detection model' -hp 'Path of   xml file of head pose estimation model' -ge 'Path of xml file of gaze estimation model' -i 'Path of input video file or enter cam for   taking input video from webcam' 
+* python main.py -fd  models\Face_detection\face-detection-adas-binary-0001.xml  -fl models\Landmarks_detection\FP32\landmarks-regression-retail-0009.xml  -hp models\Head_Pose\FP32\head-pose-estimation-adas-0001.xml  -ge models\Gaze_Estimation\FP32\gaze-estimation-adas-0002.xml  -i bin\demo.mp4 -l opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libinference_engined.dylib -d CPU -pt 0.6
+
 #### For GPU
 
 * python main.py -fd 'Path of xml file of face detection model' -fl 'Path of xml file of facial landmarks detection model' -hp 'Path of   xml file of head pose estimation model' -ge 'Path of xml file of gaze estimation model' -i 'Path of input video file or enter cam for   taking input video from webcam' -d 'GPU'
