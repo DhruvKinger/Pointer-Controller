@@ -44,34 +44,11 @@ class FacialLandmarksDetectionModel:
 
 
     def load_model(self):
-        '''
-        TODO: You will need to complete this method.
-        This method is for loading the model to the device specified by the user.
-        If your model requires any Plugins, this is where you can load them.
-        '''
+        
 
         self.core=IECore()
         self.exec_net=self.core.load_network(network=self.model,device_name=self.device,num_requests=1)
-    '''
-        self.plugin=IECore()
-        self.model=IECore().read_network(self.model_structure, self.model_weights)  # model=IEnetwork()
-
-        if not self.extensions==None:
-                print("Add cpu_extension")
-                self.plugin.add_extension(self.extensions, self.device)
-
-        
-        supported_layers = self.IECore().query_network(network=self.model, device_name=self.device)
-        unsupported_layers = [layer for layer in self.model.layers.keys() if layer not in supported_layers]
-
-        if len(unsupported_layers) > 0:
-            print("After adding the extension still unsupported layers found")
-            sys.exit(1)
-
-
-        self.exec_net = self.plugin.load_network(network=self.model, device_name=self.device,num_requests=1)
-
-    '''
+   
         
 
     def predict(self, image):

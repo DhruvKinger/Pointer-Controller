@@ -5,7 +5,7 @@ This has been provided just to give you an idea of how to structure your model c
 import cv2
 import numpy as np
 import os
-from openvino.inference_engine import IECore,IENetwork
+from openvino.inference_engine import IECore,IENetwork,IEPlugin
 
 
 class FaceDetectionModel:
@@ -42,30 +42,17 @@ class FaceDetectionModel:
              
     def load_model(self):
         
-        self.plugin=IECore()         
-
-        #self.plugin = IEPlugin(device=self.device)
-        #if self.extensions and "CPU" in self.device:
-        #    self.plugin.add_cpu_extension(self.extensions)
         
-       # print(self.extensions)
+        self.plugin=IECore()       
         
-        '''if not self.extensions==None:
-           print("Adding extension")
-           self.plugin.add_extension(self.extensions,self.device)
-                
-           if self.plugin.device=="CPU":
-                supported_layers = self.plugin.get_supported_layers(self.model)
-                unsupported_layers = [l for l in self.model.layers.keys() if l not in supported_layers]
+        supported_layers = self.plugin.query_network(network=self.model, device_name=self.device)
+        unsupported_layers = [l for l in self.model.layers.keys() if l not in supported_layers]
 
-                if len(unsupported_layers)!=0:
-                    print("After adding the extension unsupported layers found")
-                    exit(1)
-                print("After adding the extension issue is resolved")
-        else:
-                print("Give the path of cpu extension")
-                exit(1)
-           '''   
+        
+        if len(unsupported_layers)!=0:
+            print("unsupported layers found")
+            exit(1)
+           
        
         self.exec_net=self.plugin.load_network(network=self.model,device_name=self.device,num_requests=1)
        

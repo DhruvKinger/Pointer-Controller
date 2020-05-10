@@ -2,6 +2,7 @@
 
 import cv2
 import os
+import time
 import sys
 import logging
 import numpy as np
@@ -90,13 +91,20 @@ def main():
 
 
     ## Loading part starts here
+    #start_model_load_time=time.time()
+
     inputFeeder.load_data()
     Fd.load_model()
     Fl.load_model()
     Hp.load_model()
     Ge.load_model()
 
+    #total_model_load_time = time.time() - start_model_load_time
+
+
     count=0
+    #start_inference_time=time.time()
+
 
     for ret, frame in inputFeeder.next_batch():
         if not ret:
@@ -122,6 +130,10 @@ def main():
 
         new_coord,gaze_vector=Ge.predict(l_eye,r_eye,hp_out)
 
+        #total_time=time.time()-start_inference_time
+        #total_inference_time=round(total_time, 1)
+
+        #fps=count/total_inference_time
 
          ## Now comes the importance of all the flags
 
@@ -154,6 +166,10 @@ def main():
                 break
 
     logger.error("Video Done...")
+    # print(total_inference_time)
+    # print(fps)
+    #print(total_model_load_time)
+
     cv2.destroyAllWindows()
     inputFeeder.close()
 
