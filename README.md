@@ -96,6 +96,7 @@ Following are the command line arguments that can be used for running main.py fi
 1. The input_feeder.py:It is used to take the input file such as a video file or a webcam and yeilds the frames for running inference.
 2. The mouse_controller.py:It takes the x,y co-ordinates from the gaze.py to move the mouse.
 3. The face_detection.py,head_pose_estimation.py,facial_landmarks_detection.py,gaze_estimation.py:These contain each class function to preprocess the inputs and run inference on those inputs and sent it to mouse_controller to move the mouse position.
+4. main.py:User needs main.py file to run the app.
 
 
 ## Benchmarks
