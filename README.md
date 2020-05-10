@@ -114,6 +114,7 @@ I have tried to reduce precision Value but precision also reduces accuracy.
 1. GPU possed more Frames specailly when precision was FP16 because GPU has severals Execution units and their instruction sets are optimized for 16bit floating point data types.
 2. We found for CPU FP32 was a best fit even though I tried to reduce some precisions but FP32 was giving us the best results whether we compare FPS,Model Load Time or even Inference Time.
 3. We have analyzed for the GPU as well for most of the combinations FPS was averaging of 2.08 and for the FP32 it was giving 2.62 as Value.Inference time was giving an average of 28 s for all possible all combinations for GPU.
+4. For CPU, FPS was averaging around 1.9 for the combinations I tried out.
 
 
 
