@@ -124,3 +124,8 @@ I have tried to build an inference pipeline for both video file and webcam feed 
  
 Depending on chosen option it will work.
 
+### Edge Cases
+* If model cann't detect the face then it prints 'unable to detect the face" and read another frame until it detects the face or user closes the window.
+
+* If there are more than one face detected in the frame then model takes the first detected face and  control the mouse pointer.
+
