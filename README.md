@@ -84,6 +84,9 @@ Following are the command line arguments that can be used for running main.py fi
 * -l (optional) : Specify the absolute path of cpu extension if some layers of models are not supported on the device.
 * -pt (optional): Probability threshold for model to detect the face accurately from the video frame.
 
+### Project Directory Structure
+![](https://github.com/DhruvKinger/Pointer-Controller/blob/master/bin/Capture.JPG)
+
 ## Benchmarks
 *TODO:* Include the benchmark results of running your model on multiple hardwares and multiple model precisions. Your benchmarks can include: model loading time, input/output processing time, model inference time etc.
 
