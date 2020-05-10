@@ -91,7 +91,10 @@ Following are the command line arguments that can be used for running main.py fi
 *TODO:* Discuss the benchmark results and explain why you are getting the results you are getting. For instance, explain why there is difference in inference time for FP32, FP16 and INT8 models.
 
 ## Stand Out Suggestions
-This is where you can provide information about the stand out suggestions that you have attempted.
+I have tried to build an inference pipeline for both video file and webcam feed as input. Allowing the user to select their input option in the command line arguments:
+-i argument takes the input video file or a webcam, for accessing video file the command is -i "<path of video file>" whereas for accessing webcam -i "cam".
+ 
+ Depending on chosen option it will work.
 
 ### Async Inference
 If you have used Async Inference in your code, benchmark the results and explain its effects on power and performance of your project.
