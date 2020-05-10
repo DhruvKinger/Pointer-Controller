@@ -92,7 +92,7 @@ Following are the command line arguments that can be used for running main.py fi
 
 ## Stand Out Suggestions
 I have tried to build an inference pipeline for both video file and webcam feed as input. Allowing the user to select their input option in the command line arguments:
--i argument takes the input video file or a webcam, for accessing video file the command is -i "<path of video file>" whereas for accessing webcam -i "cam".
+-i argument takes the input video file or a webcam, for accessing video file the command is -i " path of video file " whereas for accessing webcam -i "cam".
  
  Depending on chosen option it will work.
 
