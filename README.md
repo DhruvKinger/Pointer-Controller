@@ -102,9 +102,7 @@ Following are the command line arguments that can be used for running main.py fi
 ## Benchmarks
 * The benchmark result of running on CPU with multiple model precisions are :
 ![](https://github.com/DhruvKinger/Pointer-Controller/blob/master/bin/cpu.PNG)
-
 * The benchmark result of running on GPU with multiple model precisions are :
-
 ![](https://github.com/DhruvKinger/Pointer-Controller/blob/master/bin/GPU.PNG)
 ## Results
 *TODO:* Discuss the benchmark results and explain why you are getting the results you are getting. For instance, explain why there is difference in inference time for FP32, FP16 and INT8 models.
@@ -113,10 +111,5 @@ Following are the command line arguments that can be used for running main.py fi
 I have tried to build an inference pipeline for both video file and webcam feed as input. Allowing the user to select their input option in the command line arguments:
 -i argument takes the input video file or a webcam, for accessing video file the command is -i " path of video file " whereas for accessing webcam -i "cam".
  
- Depending on chosen option it will work.
+Depending on chosen option it will work.
 
-### Async Inference
-If you have used Async Inference in your code, benchmark the results and explain its effects on power and performance of your project.
-
-### Edge Cases
-There will be certain situations that will break your inference flow. For instance, lighting changes or multiple people in the frame. Explain some of the edge cases you encountered in your project and how you solved them to make your project more robust.
