@@ -5,7 +5,7 @@ Computer Pointer Controller app focusses on changing the position of mouse Point
 
 ## Project Video
 
-[![Watch Video ]](https://www.youtube.com/watch?v=blI_yKZoqrY)
+[![Watch Video ](https://github.com/DhruvKinger/Pointer-Controller/blob/master/bin/Screenshot%20(185).png)](https://www.youtube.com/watch?v=blI_yKZoqrY)
 ## Project Set Up and Installation
 
 ### Note- You have to sucessfully install OpenVino on Your Local System.Here is the installation [guide](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_windows.html) for it.
