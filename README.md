@@ -110,6 +110,10 @@ For running on CPU,I tried 8 combinations with differnt precisions like INT8,FP1
 I have tried to reduce precision Value but precision also reduces accuracy. 
 #### Note: So when you use lower precision model then you can get lower accuracy than higher precision model.
 * I have tried 8 combn's on GPU as well.
+#### Key Points:
+1. GPU possed more Frames specailly when precision was FP16 because GPU has severals Execution units and their instruction sets are optimized for 16bit floating point data types.
+2. 
+
 
 
 
