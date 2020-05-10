@@ -86,18 +86,18 @@ class FacialLandmarksDetectionModel:
         coords = coords* np.array([w, h, w, h])
         coords = coords.astype(np.int32) 
 
-        l_xmin=coords[0]-5
-        l_xmax=coords[0]+5
+        l_xmin=coords[0]-10
+        l_xmax=coords[0]+10
 
 
-        l_ymin=coords[1]-5            
-        l_ymax=coords[1]+5
+        l_ymin=coords[1]-10            
+        l_ymax=coords[1]+10
         
-        r_xmin=coords[2]-5
-        r_xmax=coords[2]+5
+        r_xmin=coords[2]-10
+        r_xmax=coords[2]+10
 
-        r_ymin=coords[3]-5               
-        r_ymax=coords[3]+5
+        r_ymin=coords[3]-10              
+        r_ymax=coords[3]+10
         
 
         left_eye =  image[l_ymin:l_ymax, l_xmin:l_xmax]

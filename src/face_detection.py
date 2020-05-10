@@ -43,10 +43,14 @@ class FaceDetectionModel:
     def load_model(self):
         
         self.plugin=IECore()         
+
+        #self.plugin = IEPlugin(device=self.device)
+        #if self.extensions and "CPU" in self.device:
+        #    self.plugin.add_cpu_extension(self.extensions)
         
        # print(self.extensions)
         
-        if not self.extensions==None:
+        '''if not self.extensions==None:
            print("Adding extension")
            self.plugin.add_extension(self.extensions,self.device)
                 
@@ -61,7 +65,7 @@ class FaceDetectionModel:
         else:
                 print("Give the path of cpu extension")
                 exit(1)
-              
+           '''   
        
         self.exec_net=self.plugin.load_network(network=self.model,device_name=self.device,num_requests=1)
        
@@ -98,7 +102,7 @@ class FaceDetectionModel:
     def preprocess_output(self, outputs,prob_threshold):
    
         coords =[]
-        outs = outputs[self.output_names][0][0]
+        outs = outputs[self.output_name][0][0]
         for out in outs:
             conf = out[2]
             if conf>prob_threshold:
