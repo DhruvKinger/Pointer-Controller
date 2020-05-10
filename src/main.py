@@ -101,15 +101,13 @@ def main():
     for ret, frame in inputFeeder.next_batch():
         if not ret:
             break
-
-
         count+=1
 
         if count%5==0:
             cv2.imshow('video',cv2.resize(frame,(500,500)))
     
         key = cv2.waitKey(60)
-        croppedFace, face_coords = Fd.predict(frame.copy(), args.prob_threshold)
+        croppedFace, face_coords = Fd.predict(frame.copy(),args.prob_threshold)
 
         if type(croppedFace)==int:
             logger.error("Unable to detect the face.")

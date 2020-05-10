@@ -13,33 +13,7 @@ class FaceDetectionModel:
     Class for the Face Detection Model.
     '''
     def __init__(self, model_name, device='CPU', extensions=None):
-        '''
-        TODO: Use this to set your instance variables.
-        '''
-        '''self.model_name=model_name
-        self.model_structure=model_name
-        self.model_weights=os.path.splitext(self.model_structure)[0] + ".bin"
-       
-        self.device=device
-        self.extensions=extensions
-        self.plugin=None
-        self.net=None
-        self.network=None
-        self.exec_net=None
-
-        try:
-            self.model=IENetwork(self.model_structure, self.model_weights)
-        except Exception as e:
-            raise ValueError("Could not Initialise the network. Have you enterred the correct model path?")
-
-        self.input_name=next(iter(self.model.inputs))
-        self.input_shape=self.model.inputs[self.input_name].shape
-        self.output_name=next(iter(self.model.outputs))
-        self.output_shape=self.model.outputs[self.output_name].shape
-'''
-
-
-
+        
         self.model_name = model_name
         self.device = device
         self.extensions = extensions
@@ -68,51 +42,33 @@ class FaceDetectionModel:
              
     def load_model(self):
         
-        self.core=IECore()
-        self.exec_net=self.core.load_network(network=self.model,device_name=self.device,num_requests=1)
+        self.plugin=IECore()         
         
+       # print(self.extensions)
         
-        '''
-        
+        if not self.extensions==None:
+           print("Adding extension")
+           self.plugin.add_extension(self.extensions,self.device)
+                
+           if self.plugin.device=="CPU":
+                supported_layers = self.plugin.get_supported_layers(self.model)
+                unsupported_layers = [l for l in self.model.layers.keys() if l not in supported_layers]
 
-
-        self.plugin = IECore()
-        self.network = self.plugin.read_network(model=self.model_structure, weights=self.model_weights)
-        supported_layers = self.plugin.query_network(network=self.network, device_name=self.device)
-        unsupported_layers = [l for l in self.network.layers.keys() if l not in supported_layers]
-        
-
-
-        
-        if len(unsupported_layers)!=0 and self.device=='CPU':
-            print("unsupported layers found:{}".format(unsupported_layers))
-            if not self.extensions==None:
-                print("Adding cpu_extension")
-                self.plugin.add_extension(self.extensions, self.device)
-                supported_layers = self.plugin.query_network(network = self.network, device_name=self.device)
-                unsupported_layers = [l for l in self.network.layers.keys() if l not in supported_layers]
                 if len(unsupported_layers)!=0:
-                    print("After adding the extension still unsupported layers found")
+                    print("After adding the extension unsupported layers found")
                     exit(1)
-                print("After adding the extension the issue is resolved")
-            else:
+                print("After adding the extension issue is resolved")
+        else:
                 print("Give the path of cpu extension")
                 exit(1)
-        '''       
-       # self.exec_net = self.core.load_network(network=self.model, device_name=self.device,num_requests=1)
-        
-        
+              
        
-
-
-
-    def predict(self, image):
-        '''
-        TODO: You will need to complete this method.
-        This method is meant for running predictions on the input image.
-        '''
-        self.processed_image=self.preprocess_input(image)
-        outputs = self.exec_net.infer({self.input_name:self.processed_image})
+        self.exec_net=self.plugin.load_network(network=self.model,device_name=self.device,num_requests=1)
+       
+    def predict(self, image,prob_threshold):
+       
+        processed_image=self.preprocess_input(image.copy())
+        outputs = self.exec_net.infer({self.input_name:processed_image})
         coords = self.preprocess_output(outputs, prob_threshold)
 
         if (len(coords)==0):
