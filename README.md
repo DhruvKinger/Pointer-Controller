@@ -119,10 +119,11 @@ I have tried to reduce precision Value but precision also reduces accuracy.
 
 
 ## Stand Out Suggestions
-I have tried to build an inference pipeline for both video file and webcam feed as input. Allowing the user to select their input option in the command line arguments:
+* I have tried to build an inference pipeline for both video file and webcam feed as input.
+* Allowing the user to select their input option in the command line arguments:
 -i argument takes the input video file or a webcam, for accessing video file the command is -i " path of video file " whereas for accessing webcam -i "cam".
  
-Depending on chosen option it will work.
+* Depending on chosen option it will work.
 
 ### Edge Cases
 * If model cann't detect the face then it prints 'unable to detect the face" and read another frame until it detects the face or user closes the window.
