@@ -1,7 +1,7 @@
 # Computer Pointer Controller
 
 ## Introduction
-Computer Pointer Controller app focusses on changing the position of mouse Pointer by the direction of eyes and Head Pose.This can take Video file or Webcam as Input and then can perform accordingly.It uses combination of different models to give us a desired output.
+Computer Pointer Controller app focuses on changing the position of mouse Pointer by the direction of eyes and Head Pose.This can take Video file or Webcam as Input and then can perform accordingly.It uses combination of different models to give us a desired output.
 
 ## Project Video
 
