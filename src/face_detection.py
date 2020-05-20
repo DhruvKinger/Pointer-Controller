@@ -27,7 +27,6 @@ class FaceDetectionModel:
         self.output_names = None
         self.output_shape = None
 
-
         try:
             self.model=IENetwork(self.model_structure, self.model_weights)
         except Exception as e:
